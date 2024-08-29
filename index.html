@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>データ送信フォーム</title>
+    <script>
+        async function sendData(event) {
+            event.preventDefault(); // フォームのデフォルト動作を防ぐ
+
+            var text = document.getElementById('textInput').value;
+            var url = 'https://script.google.com/macros/s/AKfycbxaGYIllc50PXhY0WzVXLbTv39QtjS49jw5hK81qEKniI72Ldp5rKpXkcu9CE5DSiYzYg/exec'; // Google Apps ScriptのURLに置き換え
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text: text })
+                });
+
+                const result = await response.text();
+                if (response.ok) {
+                    alert('データが送信されました: ' + result);
+                } else {
+                    alert('エラーが発生しました: ' + result);
+                }
+            } catch (error) {
+                console.error('エラー:', error);
+                alert('データの送信に失敗しました: ' + error.message);
+            }
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="sendData(event)">
+        <label for="textInput">テキストを入力してください:</label>
+        <input type="text" id="textInput" name="text" required>
+        <button type="submit">送信</button>
+    </form>
+</body>
+</html>
