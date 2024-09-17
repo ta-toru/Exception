@@ -1,0 +1,118 @@
+body {
+    background-color: black; /* 初期背景色 */
+    transition: background-color 2s ease; /* 背景色の変化に2秒のトランジション */
+    margin: 0; /* デフォルトのマージンを削除 */
+    font-family: Arial, sans-serif; /* フォントを指定 */
+    display: flex; /* コンテンツをセンタリング */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ビューポートの高さに合わせる */
+    position: relative; /* 子要素を絶対配置できるようにする */
+}
+
+#mainContainer {
+    text-align: center;
+}
+
+#imageContainer {
+    display: none; /* 初期状態で画像を非表示 */
+    margin-bottom: 20px; /* 画像とコントロールの間にスペースを追加 */
+}
+
+#imageContainer img {
+    max-width: 100%;
+    height: auto;
+    opacity: 0; /* 初期状態で非表示 */
+    transition: opacity 2s ease; /* 画像のフェードインに2秒のトランジション */
+}
+
+#controlsContainer {
+    margin-top: 20px; /* コントロールと画像の間にスペースを追加 */
+}
+
+#textInput {
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#warningMessage {
+    color: white; /* 警告文の文字色 (Bootstrapのdanger色) */
+    background-color: red; /* 警告文の背景色 (Bootstrapのdanger色) */
+    padding: 10px 15px; /* パディング */
+    border-radius: 5px; /* ボーダー半径 */
+    opacity: 0; /* 初期状態で非表示 */
+    transition: opacity 1s ease-out; /* フェードアウト効果 */
+    position: absolute; /* 画面中央に絶対配置 */
+    top: 50%; /* 画面中央に配置 */
+    left: 50%; /* 画面中央に配置 */
+    transform: translate(-50%, -50%); /* 中央に正確に配置 */
+    z-index: 100; /* 他の要素の上に表示 */
+}
+
+#confirmationPopup {
+    display: none; /* 初期状態で非表示 */
+    position: fixed; /* 固定位置 */
+    top: 50%; /* 画面中央に配置 */
+    left: 50%; /* 画面中央に配置 */
+    transform: translate(-50%, -50%); /* 中央に正確に配置 */
+    background-color: rgba(0, 0, 0, 0.8); /* 半透明の背景 */
+    border-radius: 10px; /* ボーダー半径 */
+    padding: 20px; /* パディング */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* シャドウ効果 */
+    z-index: 101; /* 他の要素より上に表示 */
+    color: white; /* テキストカラー */
+    text-align: center; /* テキストを中央揃え */
+}
+
+#popupContent {
+    display: flex;
+    flex-direction: column; /* ボタンを縦に並べる */
+    align-items: center; /* 中央揃え */
+}
+
+#popupMessage {
+    margin-bottom: 20px; /* メッセージとボタンの間にスペースを追加 */
+    white-space: pre-line; /* 改行をサポートする */
+}
+
+#confirmButton, #cancelButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #28a745; /* 緑色 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px; /* ボタン間のスペース */
+}
+
+#confirmButton:hover {
+    background-color: #218838; /* ホバー時の色 */
+}
+
+#cancelButton {
+    background-color: #dc3545; /* 赤色 */
+}
+
+#cancelButton:hover {
+    background-color: #c82333; /* ホバー時の色 */
+}
+
+.highlight {
+    color: #d8000c; /* 強調する文字の色を赤に設定 */
+}
